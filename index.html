@@ -59,12 +59,13 @@ button.alt{background:#fff;color:var(--ink);box-shadow:0 6px 0 #c9b3d6}
 @keyframes fall{from{opacity:1;transform:translate(102px,-34px)}to{opacity:0;transform:translate(102px,6px)}}
 .petal{animation:petal 2.4s ease-in forwards}
 @keyframes petal{to{transform:translate(-14px,90px) rotate(200deg);opacity:0}}
+.m{opacity:0;transform:translateY(8px);transition:opacity .45s,transform .45s}.m.on{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.cloud,.pulse{animation:none}}
 </style>
 </head>
 <body>
 <main class="wrap">
-<svg id="stage" viewBox="0 0 400 440" role="img" aria-label="Animasi: seorang cowo yang jauh dari ceweknya melihat bunga kecil di jalan sore tapi tidak memetiknya, membayangkan memberikannya langsung suatu hari nanti, lalu membawa pulang rasa ingin memberikannya">
+<svg id="stage" viewBox="0 0 400 440" role="img" aria-label="Animasi: seorang cowo yang jauh dari ceweknya melihat bunga kecil di jalan sore tapi tidak memetiknya, membayangkan memberikannya langsung suatu hari nanti, lalu membawa pulang rasa ingin memberikannya. Ada juga adegan chatting, malam hari, dan jarak di antara mereka">
   <defs>
     <linearGradient id="night" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1433"/><stop offset="1" stop-color="#3f2c62"/></linearGradient>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9c8f5"/><stop offset=".55" stop-color="#ffd3dc"/><stop offset="1" stop-color="#ffe8cf"/></linearGradient>
@@ -173,6 +174,62 @@ button.alt{background:#fff;color:var(--ink);box-shadow:0 6px 0 #c9b3d6}
     </g>
     <g id="boy3" class="actor" data-y="395" style="transform:translate(-50px,395px)"></g>
   </g>
+
+  <!-- Adegan 4: chatting -->
+  <g id="s4" class="fade">
+    <rect width="400" height="440" fill="url(#night)"/>
+    <rect x="70" y="24" width="260" height="392" rx="30" fill="#150f29" stroke="#8a6fb0" stroke-width="4"/>
+    <rect x="80" y="38" width="240" height="364" rx="22" fill="#2b2050"/>
+    <path d="M80 60Q80 38 102 38H298Q320 38 320 60V84H80Z" fill="#3a2d63"/>
+    <circle cx="108" cy="62" r="12" fill="#ff9fb8"/><text x="128" y="66" font-size="13" font-weight="700" fill="#fff">Kamu</text>
+    <g id="msgs"></g>
+    <g id="tp" class="m"><rect x="92" y="4" width="46" height="28" rx="14" fill="#fff1f6"/>
+      <circle cx="106" cy="18" r="3" fill="#8a7bb0"><animate attributeName="opacity" values=".25;1;.25" dur="1s" repeatCount="indefinite"/></circle>
+      <circle cx="115" cy="18" r="3" fill="#8a7bb0"><animate attributeName="opacity" values=".25;1;.25" dur="1s" begin=".2s" repeatCount="indefinite"/></circle>
+      <circle cx="124" cy="18" r="3" fill="#8a7bb0"><animate attributeName="opacity" values=".25;1;.25" dur="1s" begin=".4s" repeatCount="indefinite"/></circle></g>
+    <rect x="88" y="352" width="224" height="38" rx="19" fill="#3a2d63"/>
+    <text id="inp" x="104" y="371" font-size="12" fill="#fff" dominant-baseline="central"></text>
+  </g>
+
+  <!-- Adegan 5: malam, rebahan -->
+  <g id="s5" class="fade">
+    <rect width="400" height="440" fill="url(#night)"/><g fill="#fff"><circle cx="40" cy="40" r="1.5"/><circle cx="360" cy="46" r="1.8"/><circle cx="330" cy="130" r="1.3"/><circle cx="50" cy="150" r="1.4"/></g>
+    <rect x="230" y="60" width="130" height="110" rx="10" fill="#26194a" stroke="#8a6fb0" stroke-width="4"/>
+    <path d="M295 60V170M230 115H360" stroke="#8a6fb0" stroke-width="3"/><circle cx="332" cy="88" r="14" fill="#fff3b0"/>
+    <text x="40" y="110" font-size="40" font-weight="700" fill="#ffe9f1">23.48</text>
+    <rect x="20" y="330" width="360" height="80" rx="14" fill="#7a4f58"/>
+    <ellipse cx="100" cy="326" rx="58" ry="22" fill="#f1e4fa"/>
+    <circle cx="104" cy="296" r="28" fill="#ffe0c7"/>
+    <path d="M76 296Q74 262 104 262Q134 262 132 296Q120 280 104 280Q88 280 76 296Z" fill="#3b2f3a"/>
+    <g fill="#3a2a30"><circle cx="95" cy="300" r="2.6"/><circle cx="113" cy="300" r="2.6"/></g>
+    <circle cx="86" cy="310" r="5" fill="#ff6f91" opacity=".8"/><circle cx="122" cy="310" r="5" fill="#ff6f91" opacity=".8"/>
+    <path d="M97 310Q104 317 111 310" stroke="#3a2a30" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <rect x="140" y="304" width="240" height="52" rx="24" fill="#7aa7ff"/>
+    <line x1="150" y1="316" x2="190" y2="268" stroke="#ffe0c7" stroke-width="9" stroke-linecap="round"/>
+    <circle class="pulse" cx="196" cy="252" r="70" fill="#bcd3ff" opacity=".15"/>
+    <rect x="178" y="226" width="36" height="52" rx="6" fill="#241a3a"/><rect class="pulse" x="182" y="231" width="28" height="42" rx="3" fill="#bcd3ff"/>
+  </g>
+
+  <!-- Adegan 6: jarak -->
+  <g id="s6" class="fade">
+    <rect width="400" height="440" fill="url(#night)"/><g fill="#fff"><circle cx="40" cy="40" r="1.5"/><circle cx="360" cy="46" r="1.8"/><circle cx="330" cy="130" r="1.3"/><circle cx="50" cy="150" r="1.4"/></g>
+    <path d="M70 300Q200 100 330 300" fill="none" stroke="#d9cbe3" stroke-width="3" stroke-dasharray="4 10" stroke-linecap="round" opacity=".7"/>
+    <circle class="pulse" cx="70" cy="300" r="28" fill="#7aa7ff" opacity=".3"/><circle class="pulse" cx="330" cy="300" r="28" fill="#ff9fb8" opacity=".3"/>
+    <circle cx="70" cy="300" r="14" fill="#7aa7ff"/><circle cx="330" cy="300" r="14" fill="#ff9fb8"/>
+    <g font-size="15" fill="#e9d7f3" text-anchor="middle"><text x="70" y="345">aku</text><text x="330" y="345">kamu</text></g>
+    <text font-size="24" text-anchor="middle" dominant-baseline="central"><animateMotion dur="4.5s" repeatCount="indefinite" path="M70 300Q200 100 330 300"/>💗</text>
+  </g>
+
+  <!-- Adegan 7: kartu di jendela -->
+  <g id="s7" class="fade">
+    <rect width="400" height="440" fill="url(#night)"/><g fill="#fff"><circle cx="40" cy="40" r="1.5"/><circle cx="360" cy="46" r="1.8"/><circle cx="330" cy="130" r="1.3"/><circle cx="50" cy="150" r="1.4"/></g>
+    <rect x="60" y="50" width="280" height="250" rx="14" fill="#26194a" stroke="#8a6fb0" stroke-width="5"/>
+    <path d="M200 50V300M60 175H340" stroke="#8a6fb0" stroke-width="4"/><circle cx="278" cy="102" r="22" fill="#fff3b0"/>
+    <rect x="40" y="300" width="320" height="18" rx="6" fill="#946673"/>
+    <g transform="translate(148 232) rotate(-4)"><rect width="108" height="72" rx="8" fill="#fff7fa"/>
+      <text class="pulse" x="54" y="-8" font-size="18" text-anchor="middle">💗</text>
+      <g fill="#4b2e45" font-size="15" font-weight="700" text-anchor="middle"><text x="54" y="32">Buat kamu,</text><text x="54" y="54">nanti.</text></g></g>
+  </g>
 </svg>
 
 <button id="snd" type="button" aria-label="Matikan musik" hidden>🔊</button>
@@ -194,7 +251,11 @@ button.alt{background:#fff;color:var(--ink);box-shadow:0 6px 0 #c9b3d6}
 <script>
 /* Ubah teks di sini */
 const CFG = {
-  pesan: "Ini bunga kecil dari jauh. Kalau suatu hari aku bisa kasih langsung, kamu mau nerima?"
+  pesan: "Ini bunga kecil dari jauh. Kalau suatu hari aku bisa kasih langsung, kamu mau nerima?",
+  /* isi chat: 'a' = Aku (kanan), 'k' = Kamu (kiri) */
+  chat: [['a','Udah makan?'],['k','Udah. Kamu?'],['a','Belum. Nungguin kamu bales 😅']],
+  panjang: "Aku tuh sebenernya pengen cerita banyak hal ke kamu, tentang hari ini, tentang kangen…",
+  kirim: "Lagi apa?"
 };
 
 
@@ -247,7 +308,8 @@ boy3.querySelector('.bub').remove();
 boy3.querySelector('.arm').classList.remove('hid');
 const f3 = boy3.querySelector('.flw'); f3.id = 'bF3'; f3.classList.add('gone');
 
-const show = id => ['s1','s2','s3'].forEach(s => $(s).classList.toggle('on', s === id));
+let chatT=[]; const cat=(ms,fn)=>chatT.push(setTimeout(fn,ms)); const clr=()=>{ chatT.forEach(clearTimeout); chatT=[]; };
+const show = id => { clr(); ['s1','s2','s3','s4','s5','s6','s7'].forEach(s => $(s).classList.toggle('on', s === id)); };
 function cap(t){ const c=$('cap'); c.classList.remove('on'); void c.offsetWidth; c.textContent=t; c.classList.add('on'); }
 function go(el, x, d){ el.style.transitionDuration = d + 's'; el.style.transform = `translate(${x}px,${el.dataset.y||330}px)`; }
 function halt(el){ go(el, new DOMMatrix(getComputedStyle(el).transform).m41, 0); el.classList.remove('walk'); }
@@ -278,10 +340,35 @@ function petal(){
   $('s2').insertBefore(p,$('s2').lastElementChild); setTimeout(()=>p.remove(),2600);
 }
 
-/* 12 ketukan */
+/* helper chat */
+function bubble(who,t,y){
+  const g=document.createElementNS(NS,'g'); g.setAttribute('class','m'); $('msgs').appendChild(g);
+  const me=who==='a', lb=mk(g,'',me?'Aku':'Kamu',0,y,9); lb.setAttribute('fill','#b9a6d6');
+  const r=document.createElementNS(NS,'rect'); r.setAttribute('y',y+5); r.setAttribute('height',28); r.setAttribute('rx',14); r.setAttribute('fill',me?'#7aa7ff':'#fff1f6'); g.appendChild(r);
+  const tx=mk(g,'',t,0,y+19,12); tx.setAttribute('fill','#2b2050'); tx.setAttribute('font-weight',700); tx.setAttribute('dominant-baseline','central');
+  const w=tx.getComputedTextLength()+24, x=me?308-w:92;
+  r.setAttribute('x',x); r.setAttribute('width',w); tx.setAttribute('x',x+12); lb.setAttribute('x',x+4);
+  void g.getBoundingClientRect(); g.classList.add('on'); return g;
+}
+function tdots(on,y){ const d=$('tp'); if(on){ d.setAttribute('transform',`translate(0,${y})`); } d.classList.toggle('on',on); }
+function typing(s,t,sp){ for(let i=1;i<=s.length;i++) cat(t+i*sp,()=>$('inp').textContent=s.slice(0,i).slice(-26)); return t+s.length*sp; }
+function erasing(s,t,sp){ for(let i=s.length-1;i>=0;i--) cat(t+(s.length-i)*sp,()=>$('inp').textContent=s.slice(0,i).slice(-26)); return t+s.length*sp; }
+function chatRun(){
+  CFG.chat.forEach(([w,t],i)=>{ const y=108+i*52, t0=600+i*2300;
+    if(w==='k'){ cat(t0-1100,()=>tdots(true,y)); cat(t0,()=>tdots(false)); }
+    cat(t0,()=>bubble(w,t,y));
+  });
+}
+
+/* ketukan */
 const steps = [
-  /* Bagian 1: jarak, lalu bunga di jalan */
+  /* Bagian 1: jarak, chat, malam */
   () => { show('s1'); cap('Kita ketemunya baru lewat layar.'); },
+  () => { show('s4'); cap('Tiap hari kita ngobrol. Isinya biasa aja.'); chatRun(); },
+  () => { cap('Tapi itu bagian favoritku dari hari-hariku.'); },
+  () => { show('s5'); cap('Katanya mau tidur. Tapi liat chat kamu dulu satu kali lagi.'); },
+  () => { show('s6'); cap('Jaraknya cuma angka. Rasanya yang nggak bisa diukur.'); },
+  /* Bagian 2: bunga di jalan */
   () => { show('s3'); cap('Tadi sore aku lewat jalan yang biasa.'); boy3.classList.add('walk'); go(boy3,195,3.4); },
   () => { halt(boy3); $('rf').classList.add('on'); cap('Ada satu bunga kecil di pinggir jalan. Langsung kepikiran kamu.'); },
   () => {
@@ -290,15 +377,22 @@ const steps = [
     at(1300,()=>{ boy3.classList.remove('walk'); boy3.classList.add('shy'); });
   },
   () => { show('s1'); cap('Tapi sekarang belum bisa. Jadi aku bayangin aja dulu…'); },
-  /* Bagian 2: khayalan */
+  /* Bagian 3: khayalan */
   () => { show('s2'); go(boy2,40,0); cap('Suatu hari, kita ketemu.'); },
   () => { boy2.classList.add('walk'); go(boy2,248,3.8); cap('Aku jalan ke arah kamu, jantungku nggak karuan.'); },
   () => { boy2.classList.remove('walk'); go(boy2,248,.4); petal(); cap('Aku udah latihan banyak kalimat. Semuanya hilang.'); },
   () => { $('arm2').classList.remove('hid'); boy2.classList.add('shy'); say('bB','Ini buat kamu.',3000); cap('Yang keluar cuma: “Ini buat kamu.”'); },
   () => { $('bF2').classList.add('gone'); $('gF').classList.remove('gone'); girl.classList.add('shy','happy'); burst($('s2'),270,235); cap('Dan kamu senyum. Cuma bayangan, tapi senyummu kerasa nyata.'); },
-  /* Bagian 3: kembali ke kenyataan */
+  /* Bagian 4: kembali ke layar */
+  () => { show('s4'); $('msgs').innerHTML=''; $('inp').textContent=''; cap('Banyak yang pengen kutulis ke kamu. Kutulis, lalu kuhapus lagi.');
+    const e=typing(CFG.panjang,500,40); erasing(CFG.panjang,e+500,14); },
+  () => { clr(); $('inp').textContent=''; cap('Yang berani kukirim cuma ini.');
+    const e=typing(CFG.kirim,300,110);
+    cat(e+500,()=>{ $('inp').textContent=''; bubble('a',CFG.kirim,108); });
+    cat(e+1700,()=>tdots(true,160)); },
   () => { show('s1'); cap('Belum sekarang.'); },
-  () => { burst($('s1'),198,300,'💗',4); cap('Tapi rasa pengen ngasihnya kubawa pulang. Sampai hari itu.'); }
+  () => { burst($('s1'),198,300,'💗',4); cap('Tapi rasa pengen ngasihnya kubawa pulang. Sampai hari itu.'); },
+  () => { show('s7'); cap('Dan sampai hari itu, aku tetap di sini.'); }
 ];
 
 function next(){
@@ -308,7 +402,7 @@ function next(){
 }
 
 function reset(){
-  timers.forEach(clearTimeout); timers=[]; n=0;
+  timers.forEach(clearTimeout); timers=[]; n=0; clr(); $('msgs').innerHTML=''; $('inp').textContent='';
   stage.classList.add('nt');
   document.querySelectorAll('#stage .on, #end.on').forEach(e=>e.classList.remove('on'));
   [boy2,boy3,girl,boyR].forEach(a=>a.classList.remove('walk','shy','happy'));
