@@ -60,7 +60,67 @@ button.alt{background:#fff;color:var(--ink);box-shadow:0 6px 0 #c9b3d6}
 .petal{animation:petal 2.4s ease-in forwards}
 @keyframes petal{to{transform:translate(-14px,90px) rotate(200deg);opacity:0}}
 .m{opacity:0;transform:translateY(8px);transition:opacity .45s,transform .45s}.m.on{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.cloud,.pulse{animation:none}}
+
+/* Adegan 5: rebahan */
+.s5-tw{animation:s5tw 3.2s ease-in-out infinite}
+@keyframes s5tw{0%,100%{opacity:.25}50%{opacity:1}}
+.s5-halo{animation:s5halo 5s ease-in-out infinite}
+@keyframes s5halo{50%{opacity:.3}}
+.s5-cur{transform-box:fill-box;transform-origin:50% 0}
+#s5.on .s5-cur{animation:s5sway 6s ease-in-out infinite alternate}
+@keyframes s5sway{from{transform:skewX(-1.6deg)}to{transform:skewX(1.6deg)}}
+.s5-t2,.s5-t3{opacity:0}
+#s5.on .s5-t1{animation:s5off .4s 3.8s forwards}
+#s5.on .s5-t2{animation:s5on .4s 4s forwards,s5off .4s 7.8s forwards}
+#s5.on .s5-t3{animation:s5on .4s 8s forwards}
+@keyframes s5on{to{opacity:1}}
+@keyframes s5off{to{opacity:0}}
+.s5-brt{transform-box:fill-box;transform-origin:50% 100%}
+#s5.on .s5-brt{animation:s5breath 4.2s ease-in-out infinite}
+@keyframes s5breath{50%{transform:scaleY(1.05)}}
+#s5.on .s5-armg{animation:s5lift 4.2s ease-in-out infinite}
+@keyframes s5lift{50%{transform:translateY(-1.6px)}}
+.s5-eye{transform-box:fill-box;transform-origin:center}
+#s5.on .s5-eye{animation:s5blink 4.4s infinite,s5off .25s 3.5s forwards}
+@keyframes s5blink{0%,18%,24%,100%{transform:scaleY(1)}21%{transform:scaleY(.1)}}
+.s5-arc,.s5-smi{opacity:0}
+#s5.on .s5-arc,#s5.on .s5-smi{animation:s5on .3s 3.5s forwards}
+#s5.on .s5-neu{animation:s5off .25s 3.5s forwards}
+.s5-bl{opacity:.4}
+#s5.on .s5-bl{animation:s5bl .7s 3.5s forwards}
+@keyframes s5bl{to{opacity:.95}}
+#s5.on .s5-fl{animation:s5fl 2.8s ease-in-out infinite}
+@keyframes s5fl{0%,100%{opacity:.85}25%{opacity:.6}45%{opacity:1}70%{opacity:.75}}
+.s5-foot{transform-box:fill-box;transform-origin:50% 100%}
+#s5.on .s5-foot{animation:s5wig .42s ease-in-out 3.6s infinite alternate}
+@keyframes s5wig{from{transform:rotate(0)}to{transform:rotate(9deg)}}
+.s5-bub{opacity:0}
+#s5.on .s5-bub{animation:s5pop .5s cubic-bezier(.3,1.6,.5,1) 1.3s forwards}
+@keyframes s5pop{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
+.s5-dot{animation:s5dot 1s ease-in-out infinite}
+@keyframes s5dot{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+#s5.on .s5-dots{animation:s5off .25s 3.4s forwards}
+.s5-bh{opacity:0}
+#s5.on .s5-bh{animation:s5pop .45s cubic-bezier(.3,1.6,.5,1) 3.5s forwards}
+.s5-fh{opacity:0}
+#s5.on .s5-fh{animation:s5float 3s ease-out infinite}
+@keyframes s5float{0%{opacity:0;transform:translate(0,0) scale(.6)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx,4px),-62px) scale(1.15)}}
+
+/* Adegan 7: cowo megang bunga */
+.s7-brt{transform-box:fill-box;transform-origin:50% 100%}
+#s7.on .s7-brt{animation:s5breath 4.2s ease-in-out infinite}
+#s7.on .s7-head{animation:s7tilt 3.4s ease-in-out infinite alternate;transform-origin:0 32px}
+@keyframes s7tilt{from{transform:rotate(-2.5deg)}to{transform:rotate(3deg)}}
+.s7-eye{transform-box:fill-box;transform-origin:center}
+#s7.on .s7-eye{animation:s5blink 4.4s infinite}
+#s7.on .s7-arm{animation:s7lift 1.1s .3s cubic-bezier(.3,1.4,.5,1) both;transform-origin:190px 384px}
+@keyframes s7lift{from{transform:rotate(38deg);opacity:0}to{transform:rotate(0);opacity:1}}
+#s7.on .s7-sway{animation:s7sway 3.2s 1.4s ease-in-out infinite alternate}
+@keyframes s7sway{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+.s7-sp{opacity:0}
+#s7.on .s7-sp{animation:s7sp 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes s7sp{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
+@media (prefers-reduced-motion:reduce){#s7 *{animation:none!important}#s7 .s7-arm{opacity:1}.cloud,.pulse{animation:none}#s5 *{animation:none!important}#s5 .s5-bub,#s5 .s5-bh,#s5 .s5-arc,#s5 .s5-smi{opacity:1}#s5 .s5-eye,#s5 .s5-neu,#s5 .s5-dots{opacity:0}#s5 .s5-bl{opacity:.95}}
 </style>
 </head>
 <body>
@@ -71,6 +131,10 @@ button.alt{background:#fff;color:var(--ink);box-shadow:0 6px 0 #c9b3d6}
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9c8f5"/><stop offset=".55" stop-color="#ffd3dc"/><stop offset="1" stop-color="#ffe8cf"/></linearGradient>
     <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a5aa8"/><stop offset=".55" stop-color="#ff9fb0"/><stop offset="1" stop-color="#ffd2a0"/></linearGradient>
     <radialGradient id="mist" cx=".5" cy=".5" r=".7"><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".5"/></radialGradient>
+    <linearGradient id="s5beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".13"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="s5blk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8db4ff"/><stop offset="1" stop-color="#6a93ea"/></linearGradient>
+    <linearGradient id="s5light" gradientUnits="userSpaceOnUse" x1="160" y1="236" x2="100" y2="300"><stop offset="0" stop-color="#cfe0ff" stop-opacity=".55"/><stop offset="1" stop-color="#cfe0ff" stop-opacity="0"/></linearGradient>
+    <radialGradient id="s5glow"><stop offset="0" stop-color="#cfe0ff" stop-opacity=".4"/><stop offset="1" stop-color="#cfe0ff" stop-opacity="0"/></radialGradient>
     <g id="bloom">
       <g fill="currentColor">
         <ellipse cy="-10" rx="6" ry="10"/><ellipse cy="-10" rx="6" ry="10" transform="rotate(60)"/><ellipse cy="-10" rx="6" ry="10" transform="rotate(120)"/>
@@ -191,23 +255,109 @@ button.alt{background:#fff;color:var(--ink);box-shadow:0 6px 0 #c9b3d6}
     <text id="inp" x="104" y="371" font-size="12" fill="#fff" dominant-baseline="central"></text>
   </g>
 
-  <!-- Adegan 5: malam, rebahan -->
+  <!-- Adegan 5: malam, rebahan sambil liat HP -->
   <g id="s5" class="fade">
-    <rect width="400" height="440" fill="url(#night)"/><g fill="#fff"><circle cx="40" cy="40" r="1.5"/><circle cx="360" cy="46" r="1.8"/><circle cx="330" cy="130" r="1.3"/><circle cx="50" cy="150" r="1.4"/></g>
-    <rect x="230" y="60" width="130" height="110" rx="10" fill="#26194a" stroke="#8a6fb0" stroke-width="4"/>
-    <path d="M295 60V170M230 115H360" stroke="#8a6fb0" stroke-width="3"/><circle cx="332" cy="88" r="14" fill="#fff3b0"/>
-    <text x="40" y="110" font-size="40" font-weight="700" fill="#ffe9f1">23.48</text>
-    <rect x="20" y="330" width="360" height="80" rx="14" fill="#7a4f58"/>
-    <ellipse cx="100" cy="326" rx="58" ry="22" fill="#f1e4fa"/>
-    <circle cx="104" cy="296" r="28" fill="#ffe0c7"/>
-    <path d="M76 296Q74 262 104 262Q134 262 132 296Q120 280 104 280Q88 280 76 296Z" fill="#3b2f3a"/>
-    <g fill="#3a2a30"><circle cx="95" cy="300" r="2.6"/><circle cx="113" cy="300" r="2.6"/></g>
-    <circle cx="86" cy="310" r="5" fill="#ff6f91" opacity=".8"/><circle cx="122" cy="310" r="5" fill="#ff6f91" opacity=".8"/>
-    <path d="M97 310Q104 317 111 310" stroke="#3a2a30" stroke-width="2" stroke-linecap="round" fill="none"/>
-    <rect x="140" y="304" width="240" height="52" rx="24" fill="#7aa7ff"/>
-    <line x1="150" y1="316" x2="190" y2="268" stroke="#ffe0c7" stroke-width="9" stroke-linecap="round"/>
-    <circle class="pulse" cx="196" cy="252" r="70" fill="#bcd3ff" opacity=".15"/>
-    <rect x="178" y="226" width="36" height="52" rx="6" fill="#241a3a"/><rect class="pulse" x="182" y="231" width="28" height="42" rx="3" fill="#bcd3ff"/>
+    <rect width="400" height="440" fill="url(#night)"/>
+    <g fill="#fff">
+      <circle class="s5-tw" cx="40" cy="40" r="1.5"/><circle class="s5-tw" style="animation-delay:-1s" cx="200" cy="30" r="1.3"/>
+      <circle class="s5-tw" style="animation-delay:-2s" cx="150" cy="150" r="1.2"/><circle class="s5-tw" style="animation-delay:-.5s" cx="50" cy="170" r="1.4"/>
+      <circle class="s5-tw" style="animation-delay:-1.6s" cx="385" cy="30" r="1.4"/>
+    </g>
+
+    <!-- sinar bulan ke kasur -->
+    <polygon points="256,170 368,170 396,336 190,336" fill="url(#s5beam)"/>
+
+    <!-- jendela + bulan -->
+    <clipPath id="s5win"><rect x="252" y="56" width="120" height="112" rx="8"/></clipPath>
+    <rect x="248" y="52" width="128" height="120" rx="12" fill="#26194a" stroke="#8a6fb0" stroke-width="4"/>
+    <g clip-path="url(#s5win)">
+      <rect x="252" y="56" width="120" height="112" fill="#3a2a63"/>
+      <circle class="s5-halo" cx="338" cy="94" r="30" fill="#fff3b0" opacity=".16"/>
+      <circle cx="338" cy="94" r="16" fill="#fff3b0"/>
+      <g class="cloud" fill="#fff" opacity=".22"><ellipse cx="270" cy="118" rx="26" ry="8"/><ellipse cx="288" cy="111" rx="16" ry="7"/></g>
+      <g fill="#fff"><circle class="s5-tw" cx="278" cy="78" r="1.2"/><circle class="s5-tw" style="animation-delay:-1.4s" cx="304" cy="140" r="1.1"/><circle class="s5-tw" style="animation-delay:-.7s" cx="356" cy="140" r="1.2"/></g>
+    </g>
+    <path d="M312 56V168M252 112H372" stroke="#8a6fb0" stroke-width="3"/>
+    <path class="s5-cur" d="M244 50H270Q262 110 268 176H244Z" fill="#5b3a7a"/>
+    <path class="s5-cur" d="M380 50H354Q362 110 356 176H380Z" fill="#5b3a7a"/>
+
+    <!-- jam digital -->
+    <rect x="26" y="58" width="116" height="52" rx="12" fill="#150f29" stroke="#8a6fb0" stroke-width="3"/>
+    <g font-size="30" font-weight="700" fill="#ff9fb8" text-anchor="middle">
+      <text class="s5-t1" x="84" y="94">23.48</text>
+      <text class="s5-t2" x="84" y="94">23.53</text>
+      <text class="s5-t3" x="84" y="94">00.02</text>
+    </g>
+
+    <!-- lantai + kasur -->
+    <rect y="408" width="400" height="32" fill="#241a3d"/>
+    <rect x="30" y="396" width="14" height="22" rx="4" fill="#4a2f3c"/><rect x="356" y="396" width="14" height="22" rx="4" fill="#4a2f3c"/>
+    <rect x="12" y="250" width="30" height="156" rx="12" fill="#7a4f58"/><rect x="12" y="250" width="30" height="10" rx="5" fill="#946673"/>
+    <rect x="14" y="352" width="372" height="48" rx="12" fill="#6b4452"/>
+    <rect x="32" y="326" width="348" height="34" rx="14" fill="#d8cdee"/>
+
+    <!-- bantal -->
+    <ellipse cx="96" cy="320" rx="54" ry="20" fill="#e1d3ef"/>
+    <ellipse cx="96" cy="312" rx="54" ry="22" fill="#f6ecfb"/>
+
+    <!-- leher, bahu, kepala (miring ke arah kamera) -->
+    <rect x="112" y="290" width="26" height="20" rx="10" fill="#ffe0c7"/>
+    <path d="M122 312Q130 290 152 296L156 330L128 330Z" fill="#5b7bd8"/>
+    <g transform="translate(100 286) rotate(-80)">
+      <circle r="27" fill="#ffe0c7"/>
+      <path d="M-28 0Q-30 -34 0 -34Q30 -34 28 0Q16 -16 0 -16Q-16 -16 -28 0Z" fill="#3b2f3a"/>
+      <circle class="s5-bl" cx="-18" cy="14" r="5" fill="#ff6f91"/><circle class="s5-bl" cx="18" cy="14" r="5" fill="#ff6f91"/>
+      <g fill="#3a2a30">
+        <ellipse class="s5-eye" cx="-9" cy="4" rx="2.7" ry="3"/><ellipse class="s5-eye" cx="9" cy="4" rx="2.7" ry="3"/>
+      </g>
+      <g fill="#bcd3ff"><circle class="s5-eye" cx="-8" cy="3" r="1"/><circle class="s5-eye" cx="10" cy="3" r="1"/></g>
+      <g class="s5-arc" fill="none" stroke="#3a2a30" stroke-width="2" stroke-linecap="round"><path d="M-13 5Q-9 -1 -5 5"/><path d="M5 5Q9 -1 13 5"/></g>
+      <path class="s5-neu" d="M-5 15Q0 17 5 15" stroke="#3a2a30" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path class="s5-smi" d="M-8 14Q0 24 8 14" stroke="#3a2a30" stroke-width="2" stroke-linecap="round" fill="none"/>
+    </g>
+    <!-- ujung bantal menutup bagian bawah kepala -->
+    <path d="M44 312Q96 304 150 312Q148 334 96 334Q46 334 44 312Z" fill="#f6ecfb"/>
+    <path d="M44 312Q96 304 150 312" fill="none" stroke="#dccdec" stroke-width="1.6"/>
+
+    <!-- cahaya HP ke muka -->
+    <polygon class="s5-fl" points="158,212 78,284 128,332 162,258" fill="url(#s5light)"/>
+    <circle class="s5-fl" cx="110" cy="292" r="36" fill="url(#s5glow)"/>
+
+    <!-- selimut (naik-turun napas) -->
+    <g class="s5-brt">
+      <path d="M132 349Q116 336 124 316Q132 298 156 298Q204 296 234 304Q264 296 294 302Q322 306 340 312Q362 316 374 326V346Q300 354 240 348T132 349Z" fill="url(#s5blk)"/>
+      <path d="M150 316Q204 308 262 316M138 334Q220 326 320 334" fill="none" stroke="#b6d0ff" stroke-width="2.4" stroke-linecap="round" opacity=".45"/>
+    </g>
+    <!-- kaki goyang kalau lagi seneng -->
+    <ellipse class="s5-foot" cx="352" cy="318" rx="22" ry="13" fill="#78a2f8"/>
+
+    <!-- tangan pegang HP -->
+    <g class="s5-armg">
+      <path d="M150 309L198 312" stroke="#5b7bd8" stroke-width="12" stroke-linecap="round"/>
+      <path d="M198 312L172 256" stroke="#ffe0c7" stroke-width="8" stroke-linecap="round"/>
+      <g transform="translate(164 234) rotate(16)">
+        <rect x="-4.5" y="-24" width="9" height="48" rx="3" fill="#241a3a"/>
+        <rect class="s5-fl" x="-5" y="-22" width="3" height="44" rx="1.5" fill="#bcd3ff"/>
+      </g>
+      <circle cx="172" cy="254" r="6.5" fill="#ffe0c7"/>
+    </g>
+
+    <!-- balon chat + hati -->
+    <g transform="translate(180 192)">
+      <g class="s5-bub">
+        <rect x="-26" y="-15" width="52" height="30" rx="15" fill="#fff1f6"/>
+        <path d="M-14 13L-22 24L-4 13Z" fill="#fff1f6"/>
+        <g class="s5-dots" fill="#8a7bb0">
+          <circle class="s5-dot" cx="-9" cy="0" r="3"/><circle class="s5-dot" style="animation-delay:.2s" cx="0" cy="0" r="3"/><circle class="s5-dot" style="animation-delay:.4s" cx="9" cy="0" r="3"/>
+        </g>
+        <text class="s5-bh" text-anchor="middle" dominant-baseline="central" font-size="17">💗</text>
+      </g>
+    </g>
+    <g font-size="15" text-anchor="middle">
+      <g transform="translate(168 176)"><text class="s5-fh" style="animation-delay:4.1s">💗</text></g>
+      <g transform="translate(192 176)"><text class="s5-fh" style="animation-delay:5s;--dx:-8px">💗</text></g>
+      <g transform="translate(180 172)"><text class="s5-fh" style="animation-delay:5.9s;--dx:14px">💗</text></g>
+    </g>
   </g>
 
   <!-- Adegan 6: jarak -->
@@ -220,15 +370,63 @@ button.alt{background:#fff;color:var(--ink);box-shadow:0 6px 0 #c9b3d6}
     <text font-size="24" text-anchor="middle" dominant-baseline="central"><animateMotion dur="4.5s" repeatCount="indefinite" path="M70 300Q200 100 330 300"/>💗</text>
   </g>
 
-  <!-- Adegan 7: kartu di jendela -->
+  <!-- Adegan 7: kartu di jendela + cowo megang bunga -->
   <g id="s7" class="fade">
-    <rect width="400" height="440" fill="url(#night)"/><g fill="#fff"><circle cx="40" cy="40" r="1.5"/><circle cx="360" cy="46" r="1.8"/><circle cx="330" cy="130" r="1.3"/><circle cx="50" cy="150" r="1.4"/></g>
-    <rect x="60" y="50" width="280" height="250" rx="14" fill="#26194a" stroke="#8a6fb0" stroke-width="5"/>
-    <path d="M200 50V300M60 175H340" stroke="#8a6fb0" stroke-width="4"/><circle cx="278" cy="102" r="22" fill="#fff3b0"/>
-    <rect x="40" y="300" width="320" height="18" rx="6" fill="#946673"/>
-    <g transform="translate(148 232) rotate(-4)"><rect width="108" height="72" rx="8" fill="#fff7fa"/>
-      <text class="pulse" x="54" y="-8" font-size="18" text-anchor="middle">💗</text>
-      <g fill="#4b2e45" font-size="15" font-weight="700" text-anchor="middle"><text x="54" y="32">Buat kamu,</text><text x="54" y="54">nanti.</text></g></g>
+    <rect width="400" height="440" fill="url(#night)"/>
+    <g fill="#fff"><circle class="s5-tw" cx="40" cy="40" r="1.5"/><circle class="s5-tw" style="animation-delay:-1.2s" cx="368" cy="26" r="1.8"/><circle class="s5-tw" style="animation-delay:-2s" cx="30" cy="150" r="1.4"/><circle class="s5-tw" style="animation-delay:-.6s" cx="372" cy="250" r="1.3"/></g>
+
+    <!-- jendela -->
+    <clipPath id="s7win"><rect x="72" y="36" width="256" height="176" rx="12"/></clipPath>
+    <rect x="68" y="32" width="264" height="184" rx="16" fill="#26194a" stroke="#8a6fb0" stroke-width="5"/>
+    <g clip-path="url(#s7win)">
+      <rect x="72" y="36" width="256" height="176" fill="#3a2a63"/>
+      <circle class="s5-halo" cx="282" cy="82" r="38" fill="#fff3b0" opacity=".16"/>
+      <circle cx="282" cy="82" r="21" fill="#fff3b0"/>
+      <g class="cloud" fill="#fff" opacity=".2"><ellipse cx="110" cy="150" rx="34" ry="9"/><ellipse cx="136" cy="141" rx="20" ry="8"/></g>
+      <g fill="#fff"><circle class="s5-tw" cx="116" cy="70" r="1.3"/><circle class="s5-tw" style="animation-delay:-1.5s" cx="170" cy="110" r="1.2"/><circle class="s5-tw" style="animation-delay:-.8s" cx="236" cy="150" r="1.2"/></g>
+    </g>
+    <path d="M200 32V216M68 124H332" stroke="#8a6fb0" stroke-width="4"/>
+    <rect x="54" y="214" width="292" height="16" rx="6" fill="#946673"/>
+
+    <!-- kartu di ambang jendela -->
+    <g transform="translate(218 148) rotate(-4)"><rect width="100" height="66" rx="8" fill="#fff7fa"/>
+      <text class="pulse" x="50" y="-8" font-size="17" text-anchor="middle">💗</text>
+      <g fill="#4b2e45" font-size="14" font-weight="700" text-anchor="middle"><text x="50" y="29">Buat kamu,</text><text x="50" y="49">nanti.</text></g></g>
+
+    <!-- cowo -->
+    <g class="s7-brt"><ellipse cx="150" cy="414" rx="66" ry="58" fill="#7aa7ff"/></g>
+    <g transform="translate(150 322)"><g class="s7-head">
+      <circle r="30" fill="#ffe0c7"/>
+      <path d="M-30 0Q-32 -34 0 -36Q32 -34 30 0Q18 -16 0 -16Q-18 -16 -30 0Z" fill="#3b2f3a"/>
+      <circle cx="-19" cy="15" r="5" fill="#ff6f91" opacity=".85"/><circle cx="19" cy="15" r="5" fill="#ff6f91" opacity=".85"/>
+      <g fill="#3a2a30"><ellipse class="s7-eye" cx="-9" cy="4" rx="2.7" ry="3"/><ellipse class="s7-eye" cx="11" cy="4" rx="2.7" ry="3"/></g>
+      <g fill="#fff"><circle cx="-8" cy="3" r=".9"/><circle cx="12" cy="3" r=".9"/></g>
+      <path d="M-6 14Q2 23 10 14" stroke="#3a2a30" stroke-width="2" stroke-linecap="round" fill="none"/>
+    </g></g>
+
+    <!-- tangan + bunga -->
+    <g class="s7-arm">
+      <path d="M190 384L222 340" stroke="#7aa7ff" stroke-width="13" stroke-linecap="round"/>
+      <path d="M204 366L222 340" stroke="#ffe0c7" stroke-width="9" stroke-linecap="round"/>
+      <g transform="translate(222 340)"><g class="s7-sway">
+        <line y2="-78" stroke="#5fae6b" stroke-width="3.4" stroke-linecap="round"/>
+        <ellipse cx="7" cy="-34" rx="9" ry="4" transform="rotate(-30 7 -34)" fill="#5fae6b"/>
+        <circle class="pulse" cy="-86" r="30" fill="#fff3b0" opacity=".28"/>
+        <g transform="translate(0 -88) scale(1.2)"><use href="#bloom"/></g>
+      </g></g>
+      <circle cx="222" cy="340" r="6.5" fill="#ffe0c7"/>
+    </g>
+
+    <!-- kilau + hati dari bunga -->
+    <g fill="#fff3b0">
+      <path class="s7-sp" d="M186 238l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/>
+      <path class="s7-sp" style="animation-delay:-.9s" d="M262 244l1.6 4.8 4.8 1.6-4.8 1.6-1.6 4.8-1.6-4.8-4.8-1.6 4.8-1.6z"/>
+      <path class="s7-sp" style="animation-delay:-1.7s" d="M244 218l1.3 3.9 3.9 1.3-3.9 1.3-1.3 3.9-1.3-3.9-3.9-1.3 3.9-1.3z"/>
+    </g>
+    <g font-size="14" text-anchor="middle">
+      <g transform="translate(222 236)"><text class="s5-fh" style="animation-delay:2.2s;--dx:-10px">💗</text></g>
+      <g transform="translate(224 236)"><text class="s5-fh" style="animation-delay:3.7s;--dx:12px">💗</text></g>
+    </g>
   </g>
 </svg>
 
