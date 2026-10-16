@@ -451,7 +451,7 @@ button.alt{background:#fff;color:var(--ink);box-shadow:0 6px 0 #c9b3d6}
 const CFG = {
   pesan: "Ini bunga kecil dari jauh. Kalau suatu hari aku bisa kasih langsung, kamu mau nerima?",
   /* isi chat: 'a' = Aku (kanan), 'k' = Kamu (kiri) */
-  chat: [['a','Udah makan?'],['k','Udah. Kamu?'],['a','Belum. Nungguin kamu bales 😅']],
+  chat: [['a','Eh, aku mau nanya dong 👀'],['k','Nanya apaa nih? 😂'],['a','Tadi kamu ngapain aja? Terus terus, habis itu gimana?'],['k','WKWK banyak banget pertanyaannya 😭'],['a','HAHAHA gimana dong, aku kepo sama cerita kamu 😭']],
   panjang: "Aku tuh sebenernya pengen cerita banyak hal ke kamu, tentang hari ini, tentang kangen…",
   kirim: "Lagi apa?"
 };
@@ -541,18 +541,44 @@ function petal(){
 /* helper chat */
 function bubble(who,t,y){
   const g=document.createElementNS(NS,'g'); g.setAttribute('class','m'); $('msgs').appendChild(g);
-  const me=who==='a', lb=mk(g,'',me?'Aku':'Kamu',0,y,9); lb.setAttribute('fill','#b9a6d6');
-  const r=document.createElementNS(NS,'rect'); r.setAttribute('y',y+5); r.setAttribute('height',28); r.setAttribute('rx',14); r.setAttribute('fill',me?'#7aa7ff':'#fff1f6'); g.appendChild(r);
-  const tx=mk(g,'',t,0,y+19,12); tx.setAttribute('fill','#2b2050'); tx.setAttribute('font-weight',700); tx.setAttribute('dominant-baseline','central');
-  const w=tx.getComputedTextLength()+24, x=me?308-w:92;
-  r.setAttribute('x',x); r.setAttribute('width',w); tx.setAttribute('x',x+12); lb.setAttribute('x',x+4);
+  const me=who==='a', left=90, right=310, maxW=210, pad=10;
+  const lb=mk(g,'',me?'Aku':'Kamu',0,y,9); lb.setAttribute('fill','#b9a6d6');
+  const tx=document.createElementNS(NS,'text');
+  tx.setAttribute('font-size','11'); tx.setAttribute('font-weight','700');
+  tx.setAttribute('fill','#2b2050'); g.appendChild(tx);
+  const words=t.split(/\s+/); let lines=[], line='';
+  for(const word of words){
+    const test=line ? line+' '+word : word;
+    tx.textContent=test;
+    if(line && tx.getComputedTextLength()>maxW-pad*2){ lines.push(line); line=word; }
+    else line=test;
+  }
+  if(line) lines.push(line);
+  lines.forEach((part,i)=>{
+    const span=document.createElementNS(NS,'tspan');
+    span.setAttribute('x','0'); span.setAttribute('dy',i===0?'0':'13');
+    span.textContent=part; tx.appendChild(span);
+  });
+  const textW=Math.max(...lines.map(part=>{tx.textContent=part;return tx.getComputedTextLength();}));
+  const w=Math.min(maxW,Math.max(76,textW+pad*2)), h=Math.max(26,lines.length*13+12);
+  const x=me?right-w:left;
+  const r=document.createElementNS(NS,'rect');
+  r.setAttribute('x',x); r.setAttribute('y',y+5); r.setAttribute('width',w); r.setAttribute('height',h);
+  r.setAttribute('rx','12'); r.setAttribute('fill',me?'#7aa7ff':'#fff1f6'); g.insertBefore(r,tx);
+  tx.textContent='';
+  lines.forEach((part,i)=>{
+    const span=document.createElementNS(NS,'tspan');
+    span.setAttribute('x',x+pad); span.setAttribute('y',y+5+((h-lines.length*13)/2)+11+i*13);
+    span.textContent=part; tx.appendChild(span);
+  });
+  lb.setAttribute('x',x+4); lb.setAttribute('y',y);
   void g.getBoundingClientRect(); g.classList.add('on'); return g;
 }
 function tdots(on,y){ const d=$('tp'); if(on){ d.setAttribute('transform',`translate(0,${y})`); } d.classList.toggle('on',on); }
 function typing(s,t,sp){ for(let i=1;i<=s.length;i++) cat(t+i*sp,()=>$('inp').textContent=s.slice(0,i).slice(-26)); return t+s.length*sp; }
 function erasing(s,t,sp){ for(let i=s.length-1;i>=0;i--) cat(t+(s.length-i)*sp,()=>$('inp').textContent=s.slice(0,i).slice(-26)); return t+s.length*sp; }
 function chatRun(){
-  CFG.chat.forEach(([w,t],i)=>{ const y=108+i*52, t0=600+i*2300;
+  CFG.chat.forEach(([w,t],i)=>{ const y=96+i*49, t0=600+i*2300;
     if(w==='k'){ cat(t0-1100,()=>tdots(true,y)); cat(t0,()=>tdots(false)); }
     cat(t0,()=>bubble(w,t,y));
   });
@@ -562,8 +588,8 @@ function chatRun(){
 const steps = [
   /* Bagian 1: jarak, chat, malam */
   () => { show('s1'); cap('Kita ketemunya baru lewat layar.'); },
-  () => { show('s4'); cap('Tiap hari kita ngobrol. Isinya biasa aja.'); chatRun(); },
-  () => { cap('Tapi itu bagian favoritku dari hari-hariku.'); },
+  () => { show('s4'); cap('Tiap hari kita ngobrol, bahas hal-hal random yang selalu bikin seru.'); chatRun(); },
+  () => { cap('Aku seneng banget ngobrol sama kamu. Hal sederhana pun jadi seru kalau sama kamu.'); },
   () => { show('s5'); cap('Katanya mau tidur. Tapi liat chat kamu dulu satu kali lagi.'); },
   () => { show('s6'); cap('Jaraknya cuma angka. Rasanya yang nggak bisa diukur.'); },
   /* Bagian 2: bunga di jalan */
